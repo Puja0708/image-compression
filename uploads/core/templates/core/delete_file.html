@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+	{% if message %}
+		<b> {{ message }} </b>
+	{% endif %}
+
+	<form method="post" enctype="multipart/form-data"> {% csrf_token %}
+		<select multiple="multiple"  name="services" id="services" size="{{ images.size }}">
+			{% for image in all_images %}
+				<option value="{{ image }}">{{ image }}</option>
+			{% endfor %}
+		</select>
+		<button type="submit">Delete</button>
+	</form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+  {% endif %}
+
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}

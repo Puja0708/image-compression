@@ -37,8 +37,10 @@ def simple_upload(request):
         img.save(pathname, quality=50, optimize=True)
         # filename = fs.save(myfile.name, myfile)
         uploaded_file_url = '/media/' + myfile.name
+        new_file_size = getsize(pathname)
         return render(request, 'core/simple_upload.html', {
-            'uploaded_file_url': uploaded_file_url
+            'uploaded_file_url': uploaded_file_url,
+            'new_file_size' : new_file_size
         })
     return render(request, 'core/simple_upload.html')
 

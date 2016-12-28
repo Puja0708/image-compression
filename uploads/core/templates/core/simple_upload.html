@@ -13,5 +13,11 @@
     <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
   {% endif %}
 
+  {%  if new_file_size %}
+  	<p> Compresses image size : {{ new_file_size }} . (50% compression)</p>
+  	Click <a href="{{ delete_image }}"> here </a> to delete images .
+
+  {% endif %}
+
   <p><a href="{% url 'home' %}">Return to home</a></p>
 {% endblock %}

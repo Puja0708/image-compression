@@ -92,7 +92,6 @@ v/
 .DS_Store
 
 staticfiles
-media
 *.sqlite3
 
 *.pyc

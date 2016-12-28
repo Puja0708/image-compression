@@ -33,11 +33,10 @@ def simple_upload(request):
             rename(filename, backupname)
 
         ImageFile.MAXBLOCK = img.size[0] * img.size[1]
-        pathname = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'media/') + myfile.name
-        print 'filename', pathname
+        pathname = os.path.join( os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'media/') + myfile.name
         img.save(pathname, quality=50, optimize=True)
         # filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = pathname
+        uploaded_file_url = '/media/' + myfile.name
         return render(request, 'core/simple_upload.html', {
             'uploaded_file_url': uploaded_file_url
         })
